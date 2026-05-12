@@ -46,7 +46,12 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Internal server error." });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 StockSense API running on http://localhost:${PORT}`);
-});
+// Only listen when running locally (not on Vercel)
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`🚀 StockSense API running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
