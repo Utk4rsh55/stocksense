@@ -128,7 +128,7 @@ export default function POSPage() {
                 onClick={() => addToCart(p)}
               >
                 <div className="product-name">{p.name}</div>
-                <div className="product-price">${parseFloat(p.price).toFixed(2)}</div>
+                <div className="product-price">₹{parseFloat(p.price).toFixed(2)}</div>
                 <div className="product-stock">
                   {p.quantity <= 0 ? 'Out of stock' : `${p.quantity} in stock`}
                 </div>
@@ -157,14 +157,14 @@ export default function POSPage() {
                 <div key={item.product_id} className="cart-item">
                   <div className="cart-item-info">
                     <div className="cart-item-name">{item.name}</div>
-                    <div className="cart-item-price">${item.price.toFixed(2)} each</div>
+                    <div className="cart-item-price">₹{item.price.toFixed(2)} each</div>
                   </div>
                   <div className="cart-item-qty">
                     <button onClick={() => updateQty(item.product_id, -1)}><FiMinus /></button>
                     <span>{item.quantity}</span>
                     <button onClick={() => updateQty(item.product_id, 1)}><FiPlus /></button>
                   </div>
-                  <div className="cart-item-total">${(item.price * item.quantity).toFixed(2)}</div>
+                  <div className="cart-item-total">₹{(item.price * item.quantity).toFixed(2)}</div>
                   <button className="btn btn-sm btn-icon" style={{ color: 'var(--danger)' }} onClick={() => removeItem(item.product_id)}>
                     <FiTrash2 />
                   </button>
@@ -184,10 +184,10 @@ export default function POSPage() {
                 <input className="form-input" type="number" value={discountPercent} onChange={e => setDiscountPercent(parseFloat(e.target.value) || 0)} min="0" max="100" />
               </div>
             </div>
-            <div className="summary-row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
-            {discountPercent > 0 && <div className="summary-row"><span>Discount ({discountPercent}%)</span><span>-${discountAmount.toFixed(2)}</span></div>}
-            {taxPercent > 0 && <div className="summary-row"><span>Tax ({taxPercent}%)</span><span>${taxAmount.toFixed(2)}</span></div>}
-            <div className="summary-row total"><span>Total</span><span>${netTotal.toFixed(2)}</span></div>
+            <div className="summary-row"><span>Subtotal</span><span>₹{subtotal.toFixed(2)}</span></div>
+            {discountPercent > 0 && <div className="summary-row"><span>Discount ({discountPercent}%)</span><span>-₹{discountAmount.toFixed(2)}</span></div>}
+            {taxPercent > 0 && <div className="summary-row"><span>Tax ({taxPercent}%)</span><span>₹{taxAmount.toFixed(2)}</span></div>}
+            <div className="summary-row total"><span>Total</span><span>₹{netTotal.toFixed(2)}</span></div>
           </div>
 
           <div className="pos-cart-actions">
@@ -195,7 +195,7 @@ export default function POSPage() {
               Clear
             </button>
             <button className="btn btn-primary" onClick={handleCheckout} disabled={cart.length === 0 || processing}>
-              {processing ? 'Processing...' : `Checkout $${netTotal.toFixed(2)}`}
+              {processing ? 'Processing...' : `Checkout ₹${netTotal.toFixed(2)}`}
             </button>
           </div>
         </div>

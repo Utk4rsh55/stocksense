@@ -49,21 +49,21 @@ async function seed() {
     if (parseInt(existingProducts.rows[0].count) === 0) {
       console.log("📦 Seeding sample products...");
       const products = [
-        ["Paracetamol 500mg", "MED-001", "Medicines", 5.99, 2.50, 150, 20, "2026-12-31", "Pain reliever tablets"],
-        ["Amoxicillin 250mg", "MED-002", "Medicines", 12.99, 6.00, 80, 15, "2026-09-15", "Antibiotic capsules"],
-        ["Vitamin C 1000mg", "MED-003", "Medicines", 8.49, 3.50, 200, 25, "2027-03-20", "Vitamin supplement"],
-        ["Band-Aid Strips", "FIR-001", "First Aid", 3.99, 1.50, 300, 30, null, "Adhesive bandage strips"],
-        ["Antiseptic Cream", "FIR-002", "First Aid", 6.49, 2.80, 4, 10, "2026-08-10", "Wound care cream"],
-        ["Digital Thermometer", "EQP-001", "Equipment", 15.99, 8.00, 45, 10, null, "Digital thermometer"],
-        ["N95 Face Masks (50pc)", "PPE-001", "PPE", 24.99, 12.00, 2, 5, null, "Protective face masks"],
-        ["Hand Sanitizer 500ml", "PPE-002", "PPE", 7.99, 3.00, 120, 15, "2026-06-30", "Antibacterial sanitizer"],
-        ["Cough Syrup 100ml", "MED-004", "Medicines", 9.99, 4.50, 60, 10, "2026-04-15", "Cough relief syrup"],
-        ["Blood Pressure Monitor", "EQP-002", "Equipment", 45.99, 25.00, 20, 5, null, "Digital BP monitor"],
-        ["Ibuprofen 400mg", "MED-005", "Medicines", 6.99, 3.00, 3, 10, "2027-01-20", "Anti-inflammatory tablets"],
-        ["Cotton Rolls 500g", "FIR-003", "First Aid", 4.49, 1.80, 180, 20, null, "Absorbent cotton"],
-        ["Eye Drops 10ml", "MED-006", "Medicines", 11.49, 5.50, 70, 10, "2026-07-25", "Lubricating eye drops"],
-        ["Surgical Gloves (100pc)", "PPE-003", "PPE", 18.99, 9.00, 50, 10, null, "Latex surgical gloves"],
-        ["Multivitamin Tablets", "MED-007", "Medicines", 14.99, 7.00, 0, 15, "2027-06-30", "Daily multivitamins"],
+        ["Paracetamol 500mg", "MED-001", "Medicines", 49.00, 20.00, 150, 20, "2026-12-31", "Pain reliever tablets"],
+        ["Amoxicillin 250mg", "MED-002", "Medicines", 120.00, 55.00, 80, 15, "2026-09-15", "Antibiotic capsules"],
+        ["Vitamin C 1000mg", "MED-003", "Medicines", 85.00, 35.00, 200, 25, "2027-03-20", "Vitamin supplement"],
+        ["Band-Aid Strips", "FIR-001", "First Aid", 35.00, 12.00, 300, 30, null, "Adhesive bandage strips"],
+        ["Antiseptic Cream", "FIR-002", "First Aid", 65.00, 28.00, 4, 10, "2026-08-10", "Wound care cream"],
+        ["Digital Thermometer", "EQP-001", "Equipment", 250.00, 120.00, 45, 10, null, "Digital thermometer"],
+        ["N95 Face Masks (50pc)", "PPE-001", "PPE", 399.00, 180.00, 2, 5, null, "Protective face masks"],
+        ["Hand Sanitizer 500ml", "PPE-002", "PPE", 99.00, 40.00, 120, 15, "2026-06-30", "Antibacterial sanitizer"],
+        ["Cough Syrup 100ml", "MED-004", "Medicines", 110.00, 50.00, 60, 10, "2026-04-15", "Cough relief syrup"],
+        ["Blood Pressure Monitor", "EQP-002", "Equipment", 1499.00, 750.00, 20, 5, null, "Digital BP monitor"],
+        ["Ibuprofen 400mg", "MED-005", "Medicines", 59.00, 25.00, 3, 10, "2027-01-20", "Anti-inflammatory tablets"],
+        ["Cotton Rolls 500g", "FIR-003", "First Aid", 45.00, 18.00, 180, 20, null, "Absorbent cotton"],
+        ["Eye Drops 10ml", "MED-006", "Medicines", 149.00, 65.00, 70, 10, "2026-07-25", "Lubricating eye drops"],
+        ["Surgical Gloves (100pc)", "PPE-003", "PPE", 299.00, 140.00, 50, 10, null, "Latex surgical gloves"],
+        ["Multivitamin Tablets", "MED-007", "Medicines", 199.00, 90.00, 0, 15, "2027-06-30", "Daily multivitamins"],
       ];
 
       for (const p of products) {

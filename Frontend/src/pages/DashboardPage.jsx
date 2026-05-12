@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FiPackage, FiDollarSign, FiTrendingUp, FiAlertTriangle, FiShoppingBag, FiClock } from 'react-icons/fi';
+import { FiPackage, FiTrendingUp, FiAlertTriangle, FiShoppingBag, FiClock } from 'react-icons/fi';
 import { Bar, Pie, Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 import api from '../services/api';
@@ -47,7 +47,7 @@ export default function DashboardPage() {
   const revenueChart = {
     labels: revenue.map(r => r.month),
     datasets: [{
-      label: 'Revenue ($)',
+      label: 'Revenue (₹)',
       data: revenue.map(r => parseFloat(r.revenue)),
       borderColor: '#6366f1',
       backgroundColor: 'rgba(99,102,241,0.15)',
@@ -99,13 +99,13 @@ export default function DashboardPage() {
           <div className="stat-label">Total Products</div>
         </div>
         <div className="stat-card">
-          <div className="stat-icon green"><FiDollarSign /></div>
-          <div className="stat-value">${(summary?.total_revenue || 0).toFixed(0)}</div>
+          <div className="stat-icon green" style={{ fontSize: 18, fontWeight: 700 }}>₹</div>
+          <div className="stat-value">₹{(summary?.total_revenue || 0).toLocaleString('en-IN', { maximumFractionDigits: 0 })}</div>
           <div className="stat-label">Total Revenue</div>
         </div>
         <div className="stat-card">
           <div className="stat-icon blue"><FiTrendingUp /></div>
-          <div className="stat-value">${(summary?.total_profit || 0).toFixed(0)}</div>
+          <div className="stat-value">₹{(summary?.total_profit || 0).toLocaleString('en-IN', { maximumFractionDigits: 0 })}</div>
           <div className="stat-label">Total Profit</div>
         </div>
         <div className="stat-card">

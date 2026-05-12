@@ -143,8 +143,8 @@ export default function InventoryPage() {
                       </td>
                       <td><code style={{ fontSize: 12, color: 'var(--text-muted)' }}>{p.sku_code || '—'}</code></td>
                       <td><span className="badge badge-info">{p.category}</span></td>
-                      <td style={{ fontWeight: 600 }}>${parseFloat(p.price).toFixed(2)}</td>
-                      <td>${parseFloat(p.cost_price || 0).toFixed(2)}</td>
+                      <td style={{ fontWeight: 600 }}>₹{parseFloat(p.price).toFixed(2)}</td>
+                      <td>₹{parseFloat(p.cost_price || 0).toFixed(2)}</td>
                       <td>
                         <span className={`badge ${p.quantity === 0 ? 'badge-danger' : lowStock ? 'badge-warning' : 'badge-success'}`}>
                           {p.quantity} {p.quantity === 0 ? '(Out)' : lowStock ? '(Low)' : ''}

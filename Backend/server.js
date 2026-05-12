@@ -12,7 +12,10 @@ const aiRoutes = require("./routes/ai");
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*',
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
@@ -22,7 +25,12 @@ app.use("/sales", salesRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/ai", aiRoutes);
 
-// Health check
+// Root health check (for Render / cloud monitoring)
+app.get("/", (req, res) => {
+  res.json({ status: "ok", service: "StockSense API", timestamp: new Date().toISOString() });
+});
+
+// DB health check
 app.get("/test-db", async (req, res) => {
   try {
     const result = await pool.query("SELECT NOW()");

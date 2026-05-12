@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS products (
 -- =====================
 CREATE TABLE IF NOT EXISTS sales (
   id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id),
+  user_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
   total_amount NUMERIC(10,2) NOT NULL DEFAULT 0,
   tax_percent NUMERIC(5,2) DEFAULT 0,
   tax_amount NUMERIC(10,2) DEFAULT 0,

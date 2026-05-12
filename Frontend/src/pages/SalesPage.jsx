@@ -66,10 +66,10 @@ export default function SalesPage() {
                       <td style={{ fontWeight: 600 }}>#{s.id}</td>
                       <td>{new Date(s.created_at).toLocaleDateString()} {new Date(s.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
                       <td>{s.cashier || '–'}</td>
-                      <td>${parseFloat(s.total_amount).toFixed(2)}</td>
-                      <td>{parseFloat(s.discount_amount) > 0 ? `-$${parseFloat(s.discount_amount).toFixed(2)}` : '–'}</td>
-                      <td>${parseFloat(s.tax_amount).toFixed(2)}</td>
-                      <td style={{ fontWeight: 700, color: 'var(--success)' }}>${parseFloat(s.net_amount).toFixed(2)}</td>
+                      <td>₹{parseFloat(s.total_amount).toFixed(2)}</td>
+                      <td>{parseFloat(s.discount_amount) > 0 ? `-₹${parseFloat(s.discount_amount).toFixed(2)}` : '–'}</td>
+                      <td>₹{parseFloat(s.tax_amount).toFixed(2)}</td>
+                      <td style={{ fontWeight: 700, color: 'var(--success)' }}>₹{parseFloat(s.net_amount).toFixed(2)}</td>
                       <td><span className="badge badge-info" style={{ textTransform: 'capitalize' }}>{s.payment_method}</span></td>
                       <td>
                         <div style={{ display: 'flex', gap: 4 }}>
@@ -104,19 +104,19 @@ export default function SalesPage() {
                 {saleDetail.items?.map((item, i) => (
                   <tr key={i}>
                     <td style={{ fontSize: 13 }}>{item.product_name}</td>
-                    <td style={{ fontSize: 13 }}>{item.quantity_sold} × ${parseFloat(item.price_at_sale).toFixed(2)}</td>
-                    <td style={{ fontSize: 13, textAlign: 'right', fontWeight: 600 }}>${parseFloat(item.subtotal).toFixed(2)}</td>
+                    <td style={{ fontSize: 13 }}>{item.quantity_sold} × ₹{parseFloat(item.price_at_sale).toFixed(2)}</td>
+                    <td style={{ fontSize: 13, textAlign: 'right', fontWeight: 600 }}>₹{parseFloat(item.subtotal).toFixed(2)}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
 
-            <div className="summary-row"><span>Subtotal</span><span>${parseFloat(saleDetail.total_amount).toFixed(2)}</span></div>
+            <div className="summary-row"><span>Subtotal</span><span>₹{parseFloat(saleDetail.total_amount).toFixed(2)}</span></div>
             {parseFloat(saleDetail.discount_amount) > 0 && (
-              <div className="summary-row"><span>Discount ({saleDetail.discount_percent}%)</span><span>-${parseFloat(saleDetail.discount_amount).toFixed(2)}</span></div>
+              <div className="summary-row"><span>Discount ({saleDetail.discount_percent}%)</span><span>-₹{parseFloat(saleDetail.discount_amount).toFixed(2)}</span></div>
             )}
-            <div className="summary-row"><span>Tax ({saleDetail.tax_percent}%)</span><span>${parseFloat(saleDetail.tax_amount).toFixed(2)}</span></div>
-            <div className="summary-row total"><span>Net Total</span><span>${parseFloat(saleDetail.net_amount).toFixed(2)}</span></div>
+            <div className="summary-row"><span>Tax ({saleDetail.tax_percent}%)</span><span>₹{parseFloat(saleDetail.tax_amount).toFixed(2)}</span></div>
+            <div className="summary-row total"><span>Net Total</span><span>₹{parseFloat(saleDetail.net_amount).toFixed(2)}</span></div>
 
             <button className="btn btn-primary" style={{ width: '100%', marginTop: 16, justifyContent: 'center' }} onClick={() => downloadInvoice(saleDetail.id)}>
               <FiDownload /> Download PDF Invoice

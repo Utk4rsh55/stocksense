@@ -175,10 +175,14 @@ export default function AIInsightsPage() {
           </div>
           {anomalies ? (
             <div>
-              <div style={{ display: 'flex', gap: 16, marginBottom: 12, fontSize: 12, color: 'var(--text-muted)' }}>
-                <span>Mean Daily Sales: <strong style={{ color: 'var(--text-primary)' }}>${anomalies.stats.mean_daily_sales}</strong></span>
-                <span>Std Dev: <strong style={{ color: 'var(--text-primary)' }}>${anomalies.stats.std_deviation}</strong></span>
-              </div>
+              {anomalies.stats ? (
+                <div style={{ display: 'flex', gap: 16, marginBottom: 12, fontSize: 12, color: 'var(--text-muted)' }}>
+                  <span>Mean Daily Sales: <strong style={{ color: 'var(--text-primary)' }}>₹{anomalies.stats.mean_daily_sales}</strong></span>
+                  <span>Std Dev: <strong style={{ color: 'var(--text-primary)' }}>₹{anomalies.stats.std_deviation}</strong></span>
+                </div>
+              ) : anomalies.message ? (
+                <p style={{ color: 'var(--text-muted)', fontSize: 13, marginBottom: 12 }}>ℹ️ {anomalies.message}</p>
+              ) : null}
               {anomalies.anomalies.length === 0 ? (
                 <p style={{ color: 'var(--success)', fontSize: 13 }}>✅ No anomalies detected in the last 30 days.</p>
               ) : anomalies.anomalies.map((a, i) => (
@@ -186,7 +190,7 @@ export default function AIInsightsPage() {
                   <span className={`badge ${a.type === 'SPIKE' ? 'badge-success' : 'badge-danger'}`}>{a.type === 'SPIKE' ? '📈 Spike' : '📉 Drop'}</span>
                   <div style={{ flex: 1 }}>
                     <span style={{ fontSize: 13 }}>{new Date(a.date).toLocaleDateString()}</span>
-                    <span style={{ fontSize: 12, color: 'var(--text-muted)', marginLeft: 8 }}>${a.daily_total} ({a.transaction_count} txns)</span>
+                    <span style={{ fontSize: 12, color: 'var(--text-muted)', marginLeft: 8 }}>₹{a.daily_total} ({a.transaction_count} txns)</span>
                   </div>
                   <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>Z: {a.z_score}</span>
                 </div>

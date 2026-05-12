@@ -198,8 +198,8 @@ router.get("/:id/invoice", authenticateToken, async (req, res) => {
       doc.text(item.product_name, 50, y, { width: 200 });
       doc.text(item.sku_code || "-", 250, y, { width: 80 });
       doc.text(String(item.quantity_sold), 330, y, { width: 50, align: "right" });
-      doc.text(`$${parseFloat(item.price_at_sale).toFixed(2)}`, 380, y, { width: 70, align: "right" });
-      doc.text(`$${parseFloat(item.subtotal).toFixed(2)}`, 460, y, { width: 80, align: "right" });
+      doc.text(`Rs.${parseFloat(item.price_at_sale).toFixed(2)}`, 380, y, { width: 70, align: "right" });
+      doc.text(`Rs.${parseFloat(item.subtotal).toFixed(2)}`, 460, y, { width: 80, align: "right" });
       y += 20;
     }
 
@@ -208,24 +208,24 @@ router.get("/:id/invoice", authenticateToken, async (req, res) => {
     y += 15;
     doc.font("Helvetica").fontSize(10);
     doc.text(`Subtotal:`, 380, y, { width: 70, align: "right" });
-    doc.text(`$${parseFloat(s.total_amount).toFixed(2)}`, 460, y, { width: 80, align: "right" });
+    doc.text(`Rs.${parseFloat(s.total_amount).toFixed(2)}`, 460, y, { width: 80, align: "right" });
     y += 15;
 
     if (parseFloat(s.discount_amount) > 0) {
       doc.text(`Discount (${s.discount_percent}%):`, 350, y, { width: 100, align: "right" });
-      doc.text(`-$${parseFloat(s.discount_amount).toFixed(2)}`, 460, y, { width: 80, align: "right" });
+      doc.text(`-Rs.${parseFloat(s.discount_amount).toFixed(2)}`, 460, y, { width: 80, align: "right" });
       y += 15;
     }
 
     if (parseFloat(s.tax_amount) > 0) {
       doc.text(`Tax (${s.tax_percent}%):`, 380, y, { width: 70, align: "right" });
-      doc.text(`$${parseFloat(s.tax_amount).toFixed(2)}`, 460, y, { width: 80, align: "right" });
+      doc.text(`Rs.${parseFloat(s.tax_amount).toFixed(2)}`, 460, y, { width: 80, align: "right" });
       y += 15;
     }
 
     doc.font("Helvetica-Bold").fontSize(12);
     doc.text(`Net Total:`, 380, y + 5, { width: 70, align: "right" });
-    doc.text(`$${parseFloat(s.net_amount).toFixed(2)}`, 460, y + 5, { width: 80, align: "right" });
+    doc.text(`Rs.${parseFloat(s.net_amount).toFixed(2)}`, 460, y + 5, { width: 80, align: "right" });
 
     // Footer
     doc.fontSize(8).font("Helvetica")
